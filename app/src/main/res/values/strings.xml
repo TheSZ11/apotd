@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">apotd</string>
+    <string name="picture_of_the_day">Picture of the day</string>
+    <string name="image_content_descriptor">The NASA astronomy image of the day</string>
+</resources>
