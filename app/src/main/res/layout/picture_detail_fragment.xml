@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/ic_launcher_background" />
+        tools:src="@drawable/apod" />
 
     <android.support.constraint.Guideline
         android:id="@+id/gl_picture_detail"
@@ -26,13 +26,27 @@
 
     <TextView
         android:id="@+id/tv_title"
+        style="@style/title_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/picture_detail_fragment_title_padding"
-        android:textSize="@dimen/picture_detail_fragment_title_textSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/gl_picture_detail"
+        tools:text="THIS IS A TITLE THIS IS A TITLE THIS IS A TITLE " />
+
+    <TextView
+        android:id="@+id/tv_exlanation"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:ellipsize="end"
+        android:maxLines="4"
+        android:padding="@dimen/picture_detail_fragment_title_padding"
+        android:textSize="@dimen/picture_detail_fragment_explanation_textSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:text="THIS IS A TITLE THIS IS A TITLE THIS IS A TITLE " />
 
     <include layout="@layout/progress_view" />

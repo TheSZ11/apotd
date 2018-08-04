@@ -34,6 +34,7 @@ class PictureDetailFragment : Fragment(), PictureDetailFragmentContract.View {
 
 	override fun onPictureFetched(picture: PictureOfTheDay) {
 		tv_title.text = picture.title
+		tv_exlanation.text = picture.explanation
 		Glide.with(context!!)
 			.load(picture.url)
 			.into(iv_image_of_the_day)

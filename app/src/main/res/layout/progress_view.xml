@@ -11,8 +11,7 @@
     android:visibility="gone"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    tools:showIn="@layout/picture_detail_fragment"
-    tools:visibility="visible">
+    tools:showIn="@layout/picture_detail_fragment">
 
     <ProgressBar
         android:layout_width="wrap_content"
