@@ -2,11 +2,13 @@ package com.szaidi.apotd.presentation.picturedetail
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.szaidi.apotd.R
+import com.szaidi.apotd.data.models.ApiErrorResponse
 import com.szaidi.apotd.data.models.PictureOfTheDay
 import com.szaidi.apotd.data.repositories.PictureRepository
 import kotlinx.android.synthetic.main.picture_detail_fragment.*
@@ -27,8 +29,7 @@ class PictureDetailFragment : Fragment(), PictureDetailFragmentContract.View {
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 
-		progress_view.visibility = View.VISIBLE
-		presenter?.fetchPicture()
+		fetchImage()
 	}
 
 	override fun onPictureFetched(picture: PictureOfTheDay) {
@@ -37,6 +38,21 @@ class PictureDetailFragment : Fragment(), PictureDetailFragmentContract.View {
 			.load(picture.url)
 			.into(iv_image_of_the_day)
 		progress_view.visibility = View.GONE
+	}
+
+	override fun onError(error: ApiErrorResponse) {
+		AlertDialog.Builder(context!!).apply {
+			setTitle(R.string.fetch_image_error)
+			setMessage(error.error.message)
+			setOnDismissListener {
+				progress_view.visibility = View.GONE
+			}
+		}.create().show()
+	}
+
+	fun fetchImage(){
+		progress_view.visibility = View.VISIBLE
+		presenter?.fetchPicture()
 	}
 
 	companion object {
