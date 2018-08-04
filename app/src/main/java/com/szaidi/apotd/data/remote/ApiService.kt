@@ -2,6 +2,7 @@ package com.szaidi.apotd.data.remote
 
 import com.szaidi.apotd.data.models.PictureOfTheDay
 import io.reactivex.Single
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -24,5 +25,5 @@ interface ApiService {
 	}
 
 	@GET("/planetary/apod?api_key=$API_KEY")
-	fun getImageOfTheDay(): Single<PictureOfTheDay>
+	fun getImageOfTheDay(): Single<Response<Any>>
 }
