@@ -10,7 +10,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="@string/image_content_descriptor"
-        android:scaleType="fitXY"
+        android:scaleType="center"
         app:layout_constraintBottom_toTopOf="@id/gl_picture_detail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,4 +34,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/gl_picture_detail"
         tools:text="THIS IS A TITLE THIS IS A TITLE THIS IS A TITLE " />
+
+    <include layout="@layout/progress_view" />
 </android.support.constraint.ConstraintLayout>
