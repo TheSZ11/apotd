@@ -9,7 +9,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 
 class PictureDetailFragmentPresenter(private val view: PictureDetailFragmentContract.View,
-									 private val lifecycle: Lifecycle,
+									 lifecycle: Lifecycle,
 									 private val pictureRepository: PictureRepository) : PictureDetailFragmentContract.Presenter, LifecycleObserver {
 	private var disposable: Disposable? = null
 
