@@ -1,6 +1,5 @@
 package com.szaidi.apotd.data.remote
 
-import com.szaidi.apotd.data.models.PictureOfTheDay
 import io.reactivex.Single
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -11,7 +10,7 @@ import retrofit2.http.GET
 interface ApiService {
 	companion object {
 		private const val BASE_URL = "https://api.nasa.gov"
-		const val API_KEY = "NNKOjkoul8n1CH18TWA9gwngW1s1SmjESPjNoUFo"
+		const val API_KEY = "tWYRyZC7ntciMwUJguYHcC1HqOTfWCAOZT9u67ug"
 
 		fun create(): ApiService {
 			val retrofit = Retrofit.Builder()
