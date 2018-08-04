@@ -48,6 +48,4 @@
         app:layout_constraintTop_toBottomOf="@id/tv_title"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:text="THIS IS A TITLE THIS IS A TITLE THIS IS A TITLE " />
-
-    <include layout="@layout/progress_view" />
 </android.support.constraint.ConstraintLayout>
