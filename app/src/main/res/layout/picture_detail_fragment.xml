@@ -5,47 +5,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/iv_image_of_the_day"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:contentDescription="@string/image_content_descriptor"
-        android:scaleType="center"
-        app:layout_constraintBottom_toTopOf="@id/gl_picture_detail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/apod" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/gl_picture_detail"
+    <HorizontalScrollView
+        android:id="@+id/hsv_image"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        android:background="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_percent="0.5"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_image_of_the_day"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/image_content_descriptor"
+            android:scaleType="center"
+            tools:src="@drawable/apod" />
+    </HorizontalScrollView>
 
     <TextView
         android:id="@+id/tv_title"
         style="@style/title_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="@dimen/picture_detail_fragment_title_padding"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gl_picture_detail"
-        tools:text="THIS IS A TITLE THIS IS A TITLE THIS IS A TITLE " />
-
-    <TextView
-        android:id="@+id/tv_exlanation"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
         android:ellipsize="end"
-        android:maxLines="4"
+        android:gravity="center"
+        android:maxLines="3"
         android:padding="@dimen/picture_detail_fragment_title_padding"
-        android:textSize="@dimen/picture_detail_fragment_explanation_textSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_title"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:text="THIS IS A TITLE THIS IS A TITLE THIS IS A TITLE " />
+        app:layout_constraintTop_toBottomOf="@id/hsv_image"
+        tools:text="THIS IS A TITLE THIS IS A TITLE THIS IS A TITLE TITLE THIS IS A TITLE TITLE THIS IS A TITLE TITLE THIS IS A TITLE " />
 </android.support.constraint.ConstraintLayout>
