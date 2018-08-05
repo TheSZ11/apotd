@@ -23,9 +23,6 @@ import com.szaidi.apotd.presentation.picturefullscreen.FullScreenImageFragment.C
 import kotlinx.android.synthetic.main.picture_detail_fragment.*
 import java.text.SimpleDateFormat
 import java.util.*
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-
-
 
 class PictureDetailFragment : Fragment(), PictureDetailFragmentContract.View {
 	private lateinit var dateSetListener: DatePickerDialog.OnDateSetListener
@@ -65,9 +62,7 @@ class PictureDetailFragment : Fragment(), PictureDetailFragmentContract.View {
 	}
 
 	override fun onPrepareOptionsMenu(menu: Menu?) {
-		menu?.findItem(R.id.action_hd)?.icon =
-				if (useHd) resources.getDrawable(R.drawable.ic_hd_black, null)
-				else resources.getDrawable(R.drawable.ic_hd, null)
+		menu?.findItem(R.id.action_hd)?.icon = useHdOrSd()
 	}
 
 	override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -85,8 +80,7 @@ class PictureDetailFragment : Fragment(), PictureDetailFragmentContract.View {
 			}
 			R.id.action_hd -> {
 				useHd = !useHd
-				item.icon = if (useHd) resources.getDrawable(R.drawable.ic_hd_black, null)
-				else resources.getDrawable(R.drawable.ic_hd, null)
+				item.icon = useHdOrSd()
 			}
 		}
 		return super.onOptionsItemSelected(item)
@@ -104,6 +98,16 @@ class PictureDetailFragment : Fragment(), PictureDetailFragmentContract.View {
 			.into(iv_image_of_the_day)
 	}
 
+	override fun onError(error: ApiErrorResponse) {
+		AlertDialog.Builder(context!!).apply {
+			setTitle(R.string.fetch_image_error)
+			setMessage(error.error.message)
+			setOnDismissListener {
+				hideProgressBar()
+			}
+		}.create().show()
+	}
+
 	private fun requestListener() = object : RequestListener<Drawable> {
 		override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<Drawable>?, isFirstResource: Boolean): Boolean {
 			hideProgressBar()
@@ -116,15 +120,8 @@ class PictureDetailFragment : Fragment(), PictureDetailFragmentContract.View {
 		}
 	}
 
-	override fun onError(error: ApiErrorResponse) {
-		AlertDialog.Builder(context!!).apply {
-			setTitle(R.string.fetch_image_error)
-			setMessage(error.error.message)
-			setOnDismissListener {
-				hideProgressBar()
-			}
-		}.create().show()
-	}
+	private fun useHdOrSd() = if (useHd) resources.getDrawable(R.drawable.ic_hd_black, null)
+	else resources.getDrawable(R.drawable.ic_hd, null)
 
 	private fun spawnDatePicker() {
 		val datePickerDialog = DatePickerDialog(context, dateSetListener,
