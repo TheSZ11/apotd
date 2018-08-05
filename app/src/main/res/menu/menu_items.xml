@@ -4,6 +4,19 @@
 
     <item
         android:id="@+id/action_refresh"
+        android:icon="@drawable/ic_refresh"
         android:title="@string/refresh"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_date"
+        android:icon="@drawable/ic_date"
+        android:title="@string/date_change"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_hd"
+        android:icon="@drawable/ic_hd"
+        android:title="@string/hd"
+        app:showAsAction="ifRoom" />
 </menu>
