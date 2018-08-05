@@ -6,6 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface ApiService {
 	companion object {
@@ -24,5 +25,5 @@ interface ApiService {
 	}
 
 	@GET("/planetary/apod?api_key=$API_KEY")
-	fun getImageOfTheDay(): Single<Response<Any>>
+	fun getImageOfTheDay(@Query("date") date: String?): Single<Response<Any>>
 }

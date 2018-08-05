@@ -16,8 +16,8 @@ class PictureDetailFragmentPresenter(private val view: PictureDetailFragmentCont
 									 private val pictureRepository: PictureRepository) : PictureDetailFragmentContract.Presenter, LifecycleObserver {
 	private var disposable: Disposable? = null
 
-	override fun fetchPicture() {
-		disposable = pictureRepository.get()
+	override fun fetchPicture(date: String?) {
+		disposable = pictureRepository.get(date)
 			.observeOn(AndroidSchedulers.mainThread())
 			.subscribe(
 					{ response: Response<Any> -> fetchPictureSuccess(response) },

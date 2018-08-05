@@ -11,6 +11,6 @@ interface PictureDetailFragmentContract {
 	}
 
 	interface Presenter {
-		fun fetchPicture()
+		fun fetchPicture(date: String?)
 	}
 }

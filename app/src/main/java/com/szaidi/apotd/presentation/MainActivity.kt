@@ -2,7 +2,6 @@ package com.szaidi.apotd.presentation
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.Menu
 import android.view.View
 import com.szaidi.apotd.R
 import com.szaidi.apotd.presentation.picturedetail.PictureDetailFragment
@@ -17,11 +16,6 @@ class MainActivity : AppCompatActivity() {
 		supportActionBar?.title = getString(R.string.picture_of_the_day)
 
 		startPictureDetailFragment()
-	}
-
-	override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-		menuInflater.inflate(R.menu.menu_items, menu)
-		return false
 	}
 
 	private fun startPictureDetailFragment() {
