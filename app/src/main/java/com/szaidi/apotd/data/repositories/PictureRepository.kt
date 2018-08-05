@@ -7,10 +7,10 @@ import retrofit2.Response
 
 class PictureRepository(private val apiService: ApiService = ApiService.create()) {
 
-	fun get(): Observable<Response<Any>> {
+	fun get(date: String?): Observable<Response<Any>> {
 		//todo: store locally in db? return from db when api errors?
 
-		return apiService.getImageOfTheDay()
+		return apiService.getImageOfTheDay(date)
 			.subscribeOn(Schedulers.io())
 			.toObservable()
 	}

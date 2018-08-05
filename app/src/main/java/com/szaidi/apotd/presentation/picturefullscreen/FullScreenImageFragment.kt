@@ -6,12 +6,14 @@ import android.support.v4.app.Fragment
 import android.transition.Fade
 import android.transition.Transition
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import com.szaidi.apotd.R
 import com.szaidi.apotd.presentation.MainActivity
@@ -23,6 +25,23 @@ class FullScreenImageFragment : Fragment() {
 		Fade().setDuration(FADE_DURATION)
 	}
 
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
+		setHasOptionsMenu(true)
+	}
+
+	override fun onPrepareOptionsMenu(menu: Menu?) {
+		menu?.apply {
+			findItem(R.id.action_refresh).isVisible = false
+			findItem(R.id.action_refresh).isEnabled = false
+			findItem(R.id.action_date).isVisible = false
+			findItem(R.id.action_date).isEnabled = false
+			findItem(R.id.action_hd).isVisible = false
+			findItem(R.id.action_hd).isEnabled = false
+		}
+		super.onPrepareOptionsMenu(menu)
+	}
+
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 		url = arguments?.getString(IMAGE_URL_EXTRA)
 
@@ -31,8 +50,6 @@ class FullScreenImageFragment : Fragment() {
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
-
-		setHasOptionsMenu(false)
 
 		(activity as? MainActivity)?.showProgressBar()
 		url?.let { loadImage(it) }
@@ -48,6 +65,8 @@ class FullScreenImageFragment : Fragment() {
 	private fun loadImage(url: String) {
 		Glide.with(context!!)
 			.load(url)
+			.apply(RequestOptions()
+				.error(R.drawable.error_image))
 			.listener(requestListener())
 			.into(iv_image_of_the_day)
 	}

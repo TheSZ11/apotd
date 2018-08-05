@@ -11,6 +11,7 @@
     <style name="title_style">
         <item name="android:textSize">@dimen/picture_detail_fragment_title_textSize</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@android:color/black</item>
     </style>
 
 </resources>
