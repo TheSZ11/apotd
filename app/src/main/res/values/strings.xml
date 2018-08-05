@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">apotd</string>
+    <string name="picture_of_the_day">Picture of the day</string>
+    <string name="image_content_descriptor">The NASA astronomy image of the day</string>
+    <string name="fetch_image_error">Error fetching image!</string>
+    <string name="refresh">Refresh</string>
+    <string name="date_change">Pick a different date</string>
+    <string name="hd">Toggle HD</string>
+    <string name="date_template_yyyy_MM_dd">YYYY-MM-dd</string>
+</resources>
